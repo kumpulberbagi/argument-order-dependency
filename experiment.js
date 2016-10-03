@@ -1,7 +1,8 @@
 'use strict'
 
-let x = 2;
-let x = 5;
+function add(x, y) {
+  return x + y;
+}
 
-
-console.log("x :", x, "y :", x);
+var add2 = add;
+console.log(add2(3, 3));
