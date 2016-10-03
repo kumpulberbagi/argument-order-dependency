@@ -43,3 +43,4 @@ rumah['short_sale'] = true
 rumah['has_tenants'] = true
 var home = new House(rumah)
 console.log(home);
+console.log(home.hasOwnProperty('has_tenants'));
