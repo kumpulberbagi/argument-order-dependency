@@ -2,25 +2,27 @@
 
 class House {
 
-  constructor(address, square_feet, num_bedrooms, num_baths, cost, down_payment, sold, has_tenants) {
-    this.address = address
-    this.square_feet = square_feet
-    this.num_bedrooms = num_bedrooms || 3
-    this.num_baths = num_baths || 2
-    this.cost = cost || 320000
-    this.down_payment = down_payment || 0.20
-    this.sold = sold || false
-    this.short_sale = short_sale
-    this.has_tenants = has_tenants || false
+  constructor(house) {
+    this.address = house['address']
+    this.square_feet = house['square_feet']
+    this.num_bedrooms = house['num_bedrooms'] || 3
+    this.num_baths = house['num_baths'] || 2
+    this.cost = house['cost'] || 320000
+    this.down_payment = house['down_payment'] || 0.20
+    this.sold = house['sold'] || false
+    this.short_sale = house['short_sale']
+    this.has_tenants = house['has_tenants'] || false
   }
 
   obscure_address() {
     this.address.replace(/.{10}$/g, '****')
+    return this.address
   }
 
   buy(money, good_credit) {
     if (money >= down_payment && good_credit)
       this.sold = true
+      return this.sold
   }
 
   down_payment() {
@@ -28,6 +30,21 @@ class House {
   }
 
   to_s() {
-    return `${obscure_address} : ${square_feet} sq. ft., ${num_bedrooms} bed, ${num_baths} bath. ${cost}`
+    return `${this.obscure_address()} : ${this.square_feet} sq. ft., ${this.num_bedrooms} bed, ${this.num_baths} bath. ${this.cost}`
   }
 }
+
+var rumah = {
+  address : "Jakarta",
+  square_feet : "20x20",
+  num_bedrooms :4,
+  num_baths : 2,
+  cost :  100000000000000000,
+  down_payment : 0.20,
+  sold : true,
+  short_sale : 500000000,
+  has_tenants : false
+};
+
+var house = new House(rumah)
+console.log(house.to_s());

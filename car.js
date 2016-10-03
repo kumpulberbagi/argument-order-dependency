@@ -3,11 +3,13 @@
 class Car {
 
   start_car(options) {
-    if (options && options['headlights'])
+    // console.log(options.hasOwnProperty('headlights'));
+    if (options && options.hasOwnProperty('headlights'))
       this.headlights = options['headlights']
-    else
+    else{
+    // console.log(options)
       this.headlights = true
-
+    }
     if (options && options['gear'])
       this.gear = options['gear']
     else
@@ -16,6 +18,7 @@ class Car {
 }
 
 var herbie = new Car
+
 
 // When we start the car, the headlights should be on by default
 herbie.start_car()
@@ -26,3 +29,4 @@ herbie.start_car({
   headlights: false
 })
 console.log(herbie.headlights) // true ...KOK BISA?!
+//karena tidak constructor dan di method start_car sudah di
